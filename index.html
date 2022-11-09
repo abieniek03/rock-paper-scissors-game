@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="AB Web Project - Adrian Bieniek">
+    <title>Rock Paper Scissors - by AB</title>
+    <link rel="shortcut icon" href="./dist/img/favicon.ico">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./dist/css/style.min.css">
+</head>
+
+<body>
+
+    <main>
+
+        <!-- CHOICE -->
+        <section class="section section__choice">
+            <div class="section__content section__content--choice">
+                <h1 class="section__title">Your pick</h1>
+                <div class="section__item-container">
+                    <button class="section__item-element section__item-element-btn">
+                        <img src="./dist/img/icon__rock.png" alt="ROCK" class="section__item-element-icon" id="rock">
+                    </button>
+
+                    <button class="section__item-element section__item-element-btn">
+                        <img src="./dist/img/icon__paper.png" alt="PAPER" class="section__item-element-icon" id="paper">
+                    </button>
+
+                    <button class="section__item-element section__item-element-btn">
+                        <img src="./dist/img/icon__scissors.png" alt="SCISSORS" class="section__item-element-icon"
+                            id="scissors">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULT -->
+        <section class="section section__result" style="display: none;">
+            <div class="section__content section__content--result">
+                <div class="section__item-container section__item-container--result"></div>
+                <a href="index.html" class="section__btn">Play again!</a>
+            </div>
+        </section>
+
+        <!-- PICK TEMPLATE -->
+        <template class="section__pick-element-temp">
+            <div class="section__item-element">
+                <img class="section__item-element-icon">
+            </div>
+        </template>
+
+    </main>
+
+    <script src="./dist/js/main.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+@use 'animation' as *;
+@use 'colors' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: $bg-color;
+	font-family: 'Poppins', sans-serif;
+}
+
+main {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+
+	// BACKGROUND EFFECT
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		z-index: -1;
+	}
+	&::before {
+		top: 0;
+		left: 0;
+		box-shadow: 0 0 20vh 50vw $gradient-primary-color;
+	}
+
+	&::after {
+		bottom: 0;
+		right: 0;
+		box-shadow: 0 0 20vh 50vw $gradient-secondary-color;
+	}
+}
+
+.section {
+	height: 100vh;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	&__content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&__title {
+		color: $title-color;
+		font-size: 3rem;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&__item {
+		&-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			margin: 1.5em 0;
+			height: 60vh;
+
+			&--result {
+				height: auto;
+			}
+		}
+
+		&-element {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: none;
+			border: none;
+
+			&-btn {
+				cursor: pointer;
+				&:hover {
+					&::before {
+						position: absolute;
+						content: '';
+						width: 50%;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						box-shadow: 0 0 50px 5px $secondary-color;
+					}
+				}
+			}
+
+			&-icon {
+				height: 15vh;
+				width: 15vh;
+			}
+
+			&--computer {
+				order: 2;
+			}
+
+			&--animation {
+				animation: scale-animation 0.6s forwards;
+			}
+		}
+	}
+	&__result {
+		&-title {
+			display: none;
+			text-align: center;
+			font-size: 3rem;
+			font-weight: bold;
+			color: $title-color;
+			margin: 1.5em 0;
+			transform: scale(0);
+			order: 1;
+
+			&--animation {
+				display: flex;
+				animation: scale-animation 0.6s 0.3s forwards;
+			}
+			&--win {
+				color: $win-color;
+			}
+
+			&--lose {
+				color: $lose-color;
+			}
+
+			&--draw {
+				color: $draw-color;
+			}
+		}
+	}
+
+	&__btn {
+		position: relative;
+		z-index: 1;
+		display: none;
+		background: transparent;
+		color: $title-color;
+		border: none;
+		outline: none;
+		padding: 0.75em 2em;
+		margin: 1.5em 0;
+		font-size: 1.4rem;
+		font-weight: bold;
+		text-decoration: none;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background 0.6s;
+		overflow: hidden;
+		border-radius: 0.3em;
+		transform: scale(0);
+
+		&--animation {
+			display: flex;
+			animation: scale-animation 0.6s 1.2s forwards;
+		}
+
+		&:hover {
+			&::before {
+				left: -100%;
+			}
+		}
+
+		&::before {
+			position: absolute;
+			content: '';
+			height: 100%;
+			width: 200%;
+			left: 0;
+			top: 0;
+			background: linear-gradient(to right, $primary-color, $secondary-color, $primary-color);
+			transition: left 0.6s;
+			z-index: -1;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.section {
+		&__title {
+			font-size: 4rem;
+		}
+		&__item {
+			&-element {
+				&-icon {
+					width: 150px;
+					height: 150px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	main {
+		background-image: linear-gradient(-45deg, $gradient-secondary-color, $bg-color, $gradient-primary-color);
+		&::before,
+		&::after {
+			display: none;
+		}
+	}
+	.section {
+		&__item {
+			&-container {
+				height: auto;
+				flex-direction: row;
+				margin: 6em;
+			}
+			&-element {
+				margin: 0 2em;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.section {
+		&__item {
+			&-element {
+				margin: 0 4em;
+
+				&-icon {
+					width: 175px;
+					height: 175px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.section {
+		&__item {
+			&-element {
+				&-icon {
+					width: 225px;
+					height: 225px;
+				}
+			}
+		}
+		&__result {
+			&-title {
+				font-size: 4rem;
+				margin: 2em;
+			}
+		}
+
+		&__button {
+			font-size: 1.75rem;
+		}
+	}
+}
